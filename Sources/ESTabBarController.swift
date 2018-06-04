@@ -114,6 +114,12 @@ open class ESTabBarController: UITabBarController, ESTabBarDelegate {
             selectedIndex = idx
             delegate?.tabBarController?(self, didSelect: vc)
         }
+        
+        if idx != 0 {
+            if let navController = self.viewControllers![0] as? UINavigationController {
+                navController.popToRootViewController(animated: false)
+            }
+        }
     }
     
     open override func tabBar(_ tabBar: UITabBar, willBeginCustomizing items: [UITabBarItem]) {
